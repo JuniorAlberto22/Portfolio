@@ -13,10 +13,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment.prod';
 import { NoticeComponent } from './notice/notice.component';
+import { ContactComponent } from './contact/contact.component';
+import { appRoutes } from './Routers';
+import { ServiceComponent } from './service/service.component';
+import { AboutComponent } from './about/about.component';
 
-const appRoutes: Routes = [
-  {path : 'header', component: HeaderComponent}
-];
+//const appRoutes: Routes = [
+ // {path : 'header', component: HeaderComponent},
+ // {path : 'contact', component: ContactComponent}
+//];
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ const appRoutes: Routes = [
     FooterComponent,
     CardFeedComponent,
     FeedPageComponent,
-    NoticeComponent
+    NoticeComponent,
+    ContactComponent,
+    ServiceComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
