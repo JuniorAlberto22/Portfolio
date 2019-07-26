@@ -4,47 +4,46 @@
     <ul class="navbar-nav">
         <a class="navbar-brand" href="#">
             <img src="http://placehold.it/150x50?text=Logo" alt="">
-          </a>
-        <li class="navbar-item">
-            <a class="nav-link" href="#">{{inicio}}</a>
-          </li>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                  {{feed}}
+        </a>
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{inicio}}<span class="sr-only">(página atual)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{feed}}
                 </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Tecnologia
-            </a>
-            <a class="navbar-item">
-              Desenvolvimento
-            </a>
-            <a class="navbar-item">
-              Notícias
-            </a>
-          </div>
-          </div>
-      <li class="navbar-item">
-        <a class="nav-link" href="#">{{quemSomonNos}}</a>
-      </li>
-      <li class="navbar-item">
-        <a class="nav-link" href="#"> {{servicos}}</a>
-      </li>
-      <li class="navbar-item">
-        <a class="nav-link" href="#">{{contatos}}</a>
-      </li>
-    </ul>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Tecnologia</a>
+                  <a class="dropdown-item" href="#">Desenvolvimento</a>
+                  <a class="dropdown-item" href="#">Notícias</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{quemSomonNos}}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">{{servicos}}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">{{contatos}}</a>
+              </li>      
+            </ul>
+        </div>
+     </ul>
+
     <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="button" class="p-2 mb-2 bg-info text-white">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-light">
+            <a class="button" class="p-2 mb-2 btn btn-light">
               Log in
             </a>
           </div>
         </div>
-      </div>
+    </div>
   </nav>
   
