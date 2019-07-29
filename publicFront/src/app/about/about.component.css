@@ -160,10 +160,11 @@ h1 {
     color: #fff;
     transition: all 0.3s ease 0s;
   }
-  .our-team .social li a:hover {
+  
+/*  .our-team .social li a:hover {
     color: #2f2f2f;
     background: #f7f5ec;
-  }
+  }*/
   @media only screen and (max-width: 990px) {
     .our-team {
       margin-bottom: 10px;

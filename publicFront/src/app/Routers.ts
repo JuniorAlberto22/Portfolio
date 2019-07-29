@@ -10,7 +10,7 @@ import { FeedPageComponent } from './feed-page/feed-page.component';
 export const appRoutes: Routes = [
     {path: '', component: CardFeedComponent},
     {path: 'home', component: FeedPageComponent},
-    {path: 'about', component: AboutComponent},
+    {path: 'about-Us', component: AboutComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'service', component: ServiceComponent},
 ]
