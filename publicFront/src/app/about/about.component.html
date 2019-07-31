@@ -12,23 +12,21 @@
       </h1>
       <div class="col-md-12">
         <div id="blogCarousel" class="carousel slide" data-ride="carousel">
-
-          <ol class="carousel-indicators">
+        <!--   <ol class="carousel-indicators">
               <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-          </ol>
+          </ol>-->
           <!-- Carousel items -->
           <div class="carousel-inner">
-
               <div class="carousel-item active">
-                  <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let member of merbers">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-3 col-6">
                       <div class="our-team" >
                         <div class="pic">
-                          <img src={{member.photo}}>
+                          <img src="https://scontent.fcpv11-1.fna.fbcdn.net/v/t1.0-1/c37.52.460.460a/42417364_1994784560586095_373281027944087552_n.jpg?_nc_cat=100&_nc_oc=AQlLEsUZ148BzfdoycbFOOKT6iz7wk23KQOBkoevWs-kNRsC9k7PaBm6UDdPKiugUug&_nc_ht=scontent.fcpv11-1.fna&oh=3c79aa8483ccd6d050555a7516622b45&oe=5DE01EE4">
                         </div>
                         <div class="team-content">
-                          <h3 class="title">{{member.memberName}}</h3>
-                          <span class="post" >{{member.memberPost}}</span>
+                          <h3 class="title">Jose Alberto Alves Bezerra Junior</h3>
+                          <span class="post">Desenvolvedor Web</span>
                         </div>
                         <ul class="social">
                           <li>
@@ -37,7 +35,42 @@
                         </ul>
                       </div>
                     </div>
-                </div>
+
+                    <div class="col-lg-3 col-6">
+                        <div class="our-team" >
+                          <div class="pic">
+                            <img src="https://media.licdn.com/dms/image/C4D03AQEbHZ526A1Hag/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=8xh-I7WwcEWvMed0ALVIU2Bs7lahHYUJNgs4WmwioNc">
+                          </div>
+                          <div class="team-content">
+                            <h3 class="title">Edlane de Olivera Gusmão Alves</h3>
+                            <span class="post">Tecnóloga em Telemática</span>
+                          </div>
+                          <ul class="social">
+                            <li>
+                              <!--<a href="#">{{member.text}}</a>-->
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3 col-6">
+                          <div class="our-team" >
+                            <div class="pic">
+                              <img src="">
+                            </div>
+                            <div class="team-content">
+                              <h3 class="title">wagner sobrenome completo</h3>
+                              <span class="post">Desenvolvedor</span>
+                            </div>
+                            <ul class="social">
+                              <li>
+                                <!--<a href="#">{{member.text}}</a>-->
+                              </li>
+                            </ul>
+                          </div>
+                      </div>
+
+                  </div>
                 <!--.row-->
             </div>
             <!--.item-->
