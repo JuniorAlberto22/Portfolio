@@ -103,7 +103,7 @@ h1 {
     transition: all 0.3s linear 0s;
   }
   .our-team:hover .pic:after {
-    background: #7ab92d;
+    background: #F47735;
   }
   .our-team .pic img {
     width: 100%;

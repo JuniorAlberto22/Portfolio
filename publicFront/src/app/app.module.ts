@@ -17,6 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 import { appRoutes } from './Routers';
 import { ServiceComponent } from './service/service.component';
 import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
 
 //const appRoutes: Routes = [
  // {path : 'header', component: HeaderComponent},
@@ -33,7 +34,8 @@ import { AboutComponent } from './about/about.component';
     NoticeComponent,
     ContactComponent,
     ServiceComponent,
-    AboutComponent
+    AboutComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

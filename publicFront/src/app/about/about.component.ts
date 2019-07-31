@@ -39,7 +39,7 @@ export class AboutComponent implements OnInit {
   }
 
   getText(): string {
-    return "descriçao do cargo";
+    return "descriçao da formação e especialidades";
   }
 
   getName(): string {

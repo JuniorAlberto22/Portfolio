@@ -2,16 +2,16 @@
 <!-- Grey with black text -->
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <ul class="navbar-nav">
-        <a class="navbar-brand"  [routerLink]="['/home']">
+        <a class="navbar-brand" routerLinkActive="active"  [routerLink]="['/home']">
             <img src="http://placehold.it/150x50?text=Logo" alt="">
         </a>
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/home']">{{inicio}}</a>
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/home']">{{inicio}}</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" routerLinkActive="active" [routerLink]="['/feed']" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{feed}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -21,13 +21,13 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/about-Us']">{{quemSomonNos}}</a>
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/about-Us']">{{quemSomonNos}}</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link"  [routerLink]="['/service']">{{servicos}}</a>
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/service']">{{servicos}}</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link"  [routerLink]="['/contact']" >{{contatos}}</a>
+                  <a class="nav-link" routerLinkActive="active"  [routerLink]="['/contact']" >{{contatos}}</a>
               </li>      
             </ul>
         </div>
