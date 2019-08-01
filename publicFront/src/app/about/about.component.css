@@ -20,6 +20,8 @@ h1 {
   
   }
   
+  #myImage{position:relative; z-index:1; background:url(http://www.cnbsp.org.br/__Documentos/Upload_Conteudo/destaques/17245/destaque.jpg) center center no-repeat; background-size:cover; }
+
   /* The colour of the indicators */
   .blog .carousel-indicators li {
       background: #a3a3a3;
@@ -171,3 +173,11 @@ h1 {
     }
   }
   
+  .edlane{
+    display: none;
+  }
+  
+ 
+
+
+

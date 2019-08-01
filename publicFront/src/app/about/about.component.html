@@ -1,14 +1,14 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
-<br><br>
 <!------ Include the above in your HEAD tag ---------->
-<div class="container">
+<div class="container" id="myImage">
     <div class="row blog">
       <h1>
-        <div class="animated fadeInLeft">MEMBROS</div><div class="animated fadeInRight">COLABORADORES</div>
+        <div class="animated fadeInLeft">MEMBROS</div><div style="color:#ffff" class="animated fadeInRight">COLABORADORES</div>
       </h1>
       <div class="col-md-12">
         <div id="blogCarousel" class="carousel slide" data-ride="carousel">
@@ -30,28 +30,28 @@
                         </div>
                         <ul class="social">
                           <li>
-                            <!--<a href="#">{{member.text}}</a>-->
+                            <a onclick="if(document.getElementById('junior') .style.display=='none') {document.getElementById('junior') .style.display=''}else{document.getElementById('junior') .style.display='none'}" >Saiba mais</a>
                           </li>
                         </ul>
                       </div>
                     </div>
 
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-3 col-6"  >
                         <div class="our-team" >
                           <div class="pic">
-                            <img src="https://media.licdn.com/dms/image/C4D03AQEbHZ526A1Hag/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=8xh-I7WwcEWvMed0ALVIU2Bs7lahHYUJNgs4WmwioNc">
+                            <img  src="https://media.licdn.com/dms/image/C4D03AQEbHZ526A1Hag/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=8xh-I7WwcEWvMed0ALVIU2Bs7lahHYUJNgs4WmwioNc">
                           </div>
                           <div class="team-content">
-                            <h3 class="title">Edlane de Olivera Gusmão Alves</h3>
+                            <h3 class="title" >Edlane de Oliveira Gusmão Alves</h3>
                             <span class="post">Tecnóloga em Telemática</span>
                           </div>
                           <ul class="social">
-                            <li>
-                              <!--<a href="#">{{member.text}}</a>-->
-                            </li>
-                          </ul>
+                              <li>
+                                <a  onclick="if(document.getElementById('edlane') .style.display=='none') {document.getElementById('edlane') .style.display=''}else{document.getElementById('edlane') .style.display='none'}">Saiba mais</a>
+                              </li>
+                            </ul>                          
                         </div>
-                      </div>
+                    </div>
 
                       <div class="col-lg-3 col-6">
                           <div class="our-team" >
@@ -63,22 +63,39 @@
                               <span class="post">Desenvolvedor</span>
                             </div>
                             <ul class="social">
-                              <li>
-                                <!--<a href="#">{{member.text}}</a>-->
-                              </li>
-                            </ul>
+                                <li>
+                                  <a href="#">Saiba mais</a>
+                                </li>
+                              </ul>
                           </div>
                       </div>
-
                   </div>
                 <!--.row-->
             </div>
             <!--.item-->
           </div>
+          <!--texto - Junior-->
+          <br>
+          <div class="card" style="max-width: 100rem; display:none;" id="junior" >
+            <div class="card-header" style="background: #17a2b8"><h3 class="card-title">Jose Alberto Alves Bezerra Junior</h3></div>
+            <div class="card-body">
+              <p class="card-text" >Sou profissional de TI a quase cinco anos e atualmente trabalho em um laboratório de P&D (Pesquisa e Desenvolvimento), onde estou desenvolvendo uma ferramenta de Stream para óculos inteligentes, utilizando Unity 3D, C#, Android e C++. Já desenvolvi aplicações web, desktop e mobile, utilizando: Angular, JavaScript, HTML, CSS, Java, Node, entre outras. Me interessei pelo seu projeto, pois já tive a oportunidade de trabalhar em aplicações semelhantes nos quais adquiri experiência no assunto e por isso me senti à vontade de enviar essa proposta. </p>
+            </div>
+            <div class="card-footer"style="background: #17a2b8"></div>
+          </div>
+
+          <!--texto - Edlane-->
+          <br>
+          <div class="card" style="max-width: 100rem; display:none;"  id="edlane"  >
+              <div class="card-header" style="background: #17a2b8"><h3 class="card-title">Edlane de Olivera Gusmão Alves</h3></div>
+              <div class="card-body">
+                <p class="card-text"  >Técnica em Telecomunicações pela Escola Técnica Redentorista e graduada em Telemática pelo IFPB campus Campina Grande, durante a graduação tive contato com configuração de dispositivos Cisco, cloud computing utilizando a tecnologia OpenStack e participei de projetos de pesquisa nas áreas de Comunicações Ópticas Indoor Utilizando Luz Visível, virtualização no processo de migração de servidores em máquinas virtuais utilizando o hypervisor XenServer e controle em redes SDN. No mercado de trabalho, tenho experiência de 8 meses com suporte a instrumentação em laboratórios de telecomunicações, atuei 6 meses com suporte técnico á usuários de um provedor de serviços de internet e tenho experiência de 7 meses com desenvolvimento web de software. </p>
+              </div>
+              <div class="card-footer"style="background: #17a2b8"></div>
+          </div>
           <!--.carousel-inner-->
         </div>
         <!--.Carousel-->
-
       </div>
-    </div>
+
 </div>
