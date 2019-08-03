@@ -28,7 +28,7 @@
               </li>
               <li class="nav-item">
                   <a class="nav-link" routerLinkActive="active"  [routerLink]="['/contact']" >{{contatos}}</a>
-              </li>      
+              </li>
             </ul>
         </div>
      </ul>
@@ -36,7 +36,7 @@
     <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button" class="p-2 mb-2 bg-info text-white">
+            <a (click)="goToSignUp()" class="button" class="p-2 mb-2 bg-info text-white">
               <strong>Sign up</strong>
             </a>
             <a class="button" class="p-2 mb-2 btn btn-light">
@@ -46,4 +46,3 @@
         </div>
     </div>
   </nav>
-  

@@ -1,3 +1,5 @@
+import { RoutesService } from './../services/routes/routes.service';
+import { LoginService } from './../services/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@Angular/forms';
 import { LoginModel } from '../Models/LoginModel';
@@ -8,6 +10,9 @@ import { LoginModel } from '../Models/LoginModel';
   styleUrls: ['./login-crud.component.css', './login-crud.component.sass']
 })
 export class LoginCrudComponent implements OnInit {
+
+  constructor(private loginService: LoginService, private routesService: RoutesService) {
+  }
 
   habilidades: string[] = [];
   habilidade = new FormControl('');
@@ -21,10 +26,10 @@ export class LoginCrudComponent implements OnInit {
     }
   );
 
-  constructor() { }
-
   cadastrar() {
-    console.log(this.getInfo());
+    //this.loginService.googleLogin();
+    this.loginService.addLogin(this.getInfo()).then(e => this.routesService.goToHome(null))
+    .catch(e => console.log('Error: ' + e));
   }
 
   adicionarHabilidade(habilidade: string) {

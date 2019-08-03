@@ -1,3 +1,4 @@
+import { RoutesService } from './../services/routes/routes.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,9 +14,13 @@ export class HeaderComponent implements OnInit {
   servicos = 'Serviços';
   contatos = 'Contatos';
 
-  constructor() { }
+  constructor(private routes: RoutesService) { }
 
   ngOnInit() {
+  }
+
+  goToSignUp() {
+    this.routes.goToSignUp('');
   }
 
 }

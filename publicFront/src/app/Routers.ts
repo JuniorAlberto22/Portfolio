@@ -11,10 +11,11 @@ import { FeedPageComponent } from './feed-page/feed-page.component';
 import { HomeComponent } from './home/home.component';
 
 export const appRoutes: Routes = [
-    {path: '', component: LoginCrudComponent},
+    {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'feed', component: FeedPageComponent},
     {path: 'about-Us', component: AboutComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'service', component: ServiceComponent},
+    {path: 'signup', component: LoginCrudComponent}
 ];

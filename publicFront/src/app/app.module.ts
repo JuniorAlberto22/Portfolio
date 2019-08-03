@@ -21,7 +21,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoticeCrudComponent } from './notice-crud/notice-crud.component';
 import { LoginCrudComponent } from './login-crud/login-crud.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -46,11 +47,12 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     RouterModule.forRoot(appRoutes, {enableTracing: true}),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
     FormsModule,
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
