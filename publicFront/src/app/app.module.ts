@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { CardFeedComponent } from './card-feed/card-feed.component';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { FeedPageComponent } from './feed-page/feed-page.component';
@@ -18,11 +17,11 @@ import { appRoutes } from './Routers';
 import { ServiceComponent } from './service/service.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NoticeCrudComponent } from './notice-crud/notice-crud.component';
+import { LoginCrudComponent } from './login-crud/login-crud.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
-//const appRoutes: Routes = [
- // {path : 'header', component: HeaderComponent},
- // {path : 'contact', component: ContactComponent}
-//];
 
 @NgModule({
   declarations: [
@@ -35,7 +34,9 @@ import { HomeComponent } from './home/home.component';
     ContactComponent,
     ServiceComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    NoticeCrudComponent,
+    LoginCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,10 @@ import { HomeComponent } from './home/home.component';
     MatButtonModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true}),
     AngularFireModule.initializeApp(environment.config),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
