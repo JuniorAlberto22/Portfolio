@@ -19,10 +19,12 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoticeCrudComponent } from './notice-crud/notice-crud.component';
-import { LoginCrudComponent } from './login-crud/login-crud.component';
+import { LoginCrudComponent } from './modais/login-crud/login-crud.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { LoginModalComponent } from './modais/login-modal/login-modal.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AboutComponent,
     HomeComponent,
     NoticeCrudComponent,
-    LoginCrudComponent
+    LoginCrudComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +53,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireAuthModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    ModalModule.forRoot()
   ],
   providers: [AngularFirestore],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginModalComponent, LoginCrudComponent]
 })
 export class AppModule { }

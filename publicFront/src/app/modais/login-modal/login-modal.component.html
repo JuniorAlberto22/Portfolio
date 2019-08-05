@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="loginFormGroup">
+    <div class="form-group">
+      <label for="inputEmail4" class="font-weight-bold">Email</label>
+      <input formControlName="email" type="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="inputEmail4" class="font-weight-bold">Password</label>
+        <input formControlName="password" type="password" class="form-control" placeholder="Password">
+      </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <div class="row col-md-12" >
+    <button style="margin: 5px;" type="button" class="btn button-local-primary col-md-5" (click)="CriarConta()">Criar Conta</button>
+    <button style="margin: 5px;" type="button" class="btn button-local-primary col-md-5" (click)="Entrar()">Entrar</button>
+  </div>
+</div>
+

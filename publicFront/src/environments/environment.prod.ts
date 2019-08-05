@@ -5,8 +5,8 @@ export const environment = {
     authDomain: 'meuprojetoincriveletop.firebaseapp.com',
     databaseURL: 'https://meuprojetoincriveletop.firebaseio.com',
     projectId: 'meuprojetoincriveletop',
-    storageBucket: '',
+    storageBucket: 'meuprojetoincriveletop.appspot.com',
     messagingSenderId: '982373395487',
-    appId: '1:982373395487:web:5de9fd68e8421f00'
+    appId: '1:982373395487:web:a64970f819d5446b'
   }
 };

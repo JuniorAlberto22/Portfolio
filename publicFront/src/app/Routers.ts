@@ -1,4 +1,4 @@
-import { LoginCrudComponent } from './login-crud/login-crud.component';
+import { LoginCrudComponent } from './modais/login-crud/login-crud.component';
 import { NoticeCrudComponent } from './notice-crud/notice-crud.component';
 import { HeaderComponent } from './header/header.component';
 import { Routes } from '@angular/router';
@@ -16,6 +16,5 @@ export const appRoutes: Routes = [
     {path: 'feed', component: FeedPageComponent},
     {path: 'about-Us', component: AboutComponent},
     {path: 'contact', component: ContactComponent},
-    {path: 'service', component: ServiceComponent},
-    {path: 'signup', component: LoginCrudComponent}
+    {path: 'service', component: ServiceComponent}
 ];

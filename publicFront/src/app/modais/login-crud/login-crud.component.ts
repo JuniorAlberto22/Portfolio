@@ -1,8 +1,8 @@
-import { RoutesService } from './../services/routes/routes.service';
-import { LoginService } from './../services/login/login.service';
+import { RoutesService } from '../../services/routes/routes.service';
+import { LoginService } from '../../services/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@Angular/forms';
-import { LoginModel } from '../Models/LoginModel';
+import { LoginModel } from '../../Models/LoginModel';
 
 @Component({
   selector: 'app-login-crud',
@@ -14,6 +14,7 @@ export class LoginCrudComponent implements OnInit {
   constructor(private loginService: LoginService, private routesService: RoutesService) {
   }
 
+  close: any;
   habilidades: string[] = [];
   habilidade = new FormControl('');
 
@@ -28,8 +29,12 @@ export class LoginCrudComponent implements OnInit {
 
   cadastrar() {
     //this.loginService.googleLogin();
-    this.loginService.addLogin(this.getInfo()).then(e => this.routesService.goToHome(null))
-    .catch(e => console.log('Error: ' + e));
+    let info = this.getInfo();
+    this.loginService.addLogin(info).then(e => {
+      this.closeModal();
+      this.loginService.signLogin(info);
+      this.routesService.goToHome(null);
+    }).catch(e => console.log('Error: ' + e));
   }
 
   adicionarHabilidade(habilidade: string) {
@@ -50,6 +55,7 @@ export class LoginCrudComponent implements OnInit {
 
   getInfo(): LoginModel {
     return {
+      uid: null,
       email: this.loginFormGroup.value.email,
       nome: this.loginFormGroup.value.nome,
       password: this.loginFormGroup.value.password,
@@ -58,6 +64,9 @@ export class LoginCrudComponent implements OnInit {
     };
   }
 
+  closeModal() {
+    this.close();
+  }
   ngOnInit() {
   }
 }

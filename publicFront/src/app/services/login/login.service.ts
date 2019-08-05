@@ -1,7 +1,7 @@
 import { RoutesService } from './../routes/routes.service';
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { LoginModel } from 'src/app/Models/LoginModel';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -15,31 +15,82 @@ interface User {
   favoriteColor?: string;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  user: Observable<User>;
+  collection = 'logins';
+  static userSession: Observable<LoginModel[]>;
+  static userEmitter: EventEmitter<LoginModel[]> = new EventEmitter();
 
+  // tslint:disable-next-line: member-ordering
+  user: Observable<User>;
   private loginsCollections: AngularFirestoreCollection<LoginModel>;
-  logins: Observable< LoginModel[]>;
+  logins: Observable<LoginModel[]>;
 
   constructor(private readonly afs: AngularFirestore, private afAuth: AngularFireAuth, private routesService: RoutesService) {
     this.loginsCollections = afs.collection<LoginModel>('logins');
-    this.user = this.afAuth.authState.pipe(
+  }
+
+  private setUserSession(uid: string): Observable<LoginModel[]> {
+    const filter = this.afs.collection<LoginModel>(this.collection, ref => ref.where('uid', '==', uid).limit(1));
+    return filter.valueChanges();
+  }
+
+  async createLogin(user: LoginModel) {
+      try {
+        return await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      } catch (error) {
+        console.log(error);
+        return null;
+      }
+  }
+
+  async login(user: LoginModel) {
+    return await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+  }
+
+  async signLogin(user: LoginModel): Promise<Observable<LoginModel[]>> {
+    const login = await this.login(user);
+    LoginService.userSession = await this.setUserSession(login.user.uid);
+    LoginService.userSession.subscribe(s => {
+      LoginService.userEmitter.emit(s);
+    });
+    return await LoginService.userSession;
+  }
+
+  async logOut() {
+    try {
+      return await this.afAuth.auth.signOut();
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
+  loadUser(): Observable<User> {
+    return this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
-      })
-    );
+      }));
   }
 
-  addLogin(login: LoginModel): Promise<any> {
-    return this.loginsCollections.add(login);
+  async addLogin(login: LoginModel): Promise<any> {
+    const result = await this.createLogin(login);
+    return this.loginsCollections.add({
+      uid: result.user.uid,
+      email: login.email,
+      password: null,
+      nome: login.nome,
+      sobrenome: login.sobrenome,
+      habilidades: login.habilidades
+    });
   }
 
   googleLogin() {
@@ -49,8 +100,8 @@ export class LoginService {
 
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
-    .then(credential => this.updateUserData(credential.user))
-    .catch(error => console.log(error));
+      .then(credential => this.updateUserData(credential.user))
+      .catch(error => console.log(error));
   }
 
   private updateUserData(user) {
@@ -66,7 +117,7 @@ export class LoginService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.routesService.goToHome(null);
+      this.routesService.goToHome(null);
     });
   }
 }
