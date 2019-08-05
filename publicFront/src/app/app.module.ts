@@ -25,6 +25,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginModalComponent } from './modais/login-modal/login-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LogoutModalComponent } from './modais/logout-modal/logout-modal.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HomeComponent,
     NoticeCrudComponent,
     LoginCrudComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    LogoutModalComponent
   ],
   imports: [
     BrowserModule,
@@ -54,10 +57,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ReactiveFormsModule,
     FormsModule,
     AngularFontAwesomeModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AngularFireStorageModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent],
-  entryComponents: [LoginModalComponent, LoginCrudComponent]
+  entryComponents: [LoginModalComponent, LoginCrudComponent, LogoutModalComponent]
 })
 export class AppModule { }

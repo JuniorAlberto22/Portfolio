@@ -4,5 +4,7 @@ export class LoginModel {
   password: string;
   nome: string;
   sobrenome: string;
+  image: any;
+  imagePath: any;
   habilidades: string[];
 }

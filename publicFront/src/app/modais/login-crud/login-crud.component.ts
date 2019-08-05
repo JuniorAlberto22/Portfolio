@@ -17,6 +17,8 @@ export class LoginCrudComponent implements OnInit {
   close: any;
   habilidades: string[] = [];
   habilidade = new FormControl('');
+  selectedFile: ImageSnippet;
+  imageFile: any = 'assets/images/perfil.jpg';
 
   loginFormGroup = new FormGroup(
     {
@@ -28,8 +30,7 @@ export class LoginCrudComponent implements OnInit {
   );
 
   cadastrar() {
-    //this.loginService.googleLogin();
-    let info = this.getInfo();
+    const info = this.getInfo();
     this.loginService.addLogin(info).then(e => {
       this.closeModal();
       this.loginService.signLogin(info);
@@ -60,8 +61,20 @@ export class LoginCrudComponent implements OnInit {
       nome: this.loginFormGroup.value.nome,
       password: this.loginFormGroup.value.password,
       sobrenome: this.loginFormGroup.value.sobrenome,
-      habilidades: this.habilidades
+      habilidades: this.habilidades,
+      image: this.selectedFile.file,
+      imagePath: null
     };
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+    });
+    reader.readAsDataURL(file);
+    reader.onload = () => this.imageFile = reader.result;
   }
 
   closeModal() {
@@ -69,4 +82,8 @@ export class LoginCrudComponent implements OnInit {
   }
   ngOnInit() {
   }
+}
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
 }

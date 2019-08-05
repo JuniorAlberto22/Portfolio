@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { LoginModel } from 'src/app/Models/LoginModel';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 interface User {
   uid: string;
@@ -30,7 +31,7 @@ export class LoginService {
   private loginsCollections: AngularFirestoreCollection<LoginModel>;
   logins: Observable<LoginModel[]>;
 
-  constructor(private readonly afs: AngularFirestore, private afAuth: AngularFireAuth, private routesService: RoutesService) {
+  constructor(private readonly afs: AngularFirestore, private afAuth: AngularFireAuth, private routesService: RoutesService, private storage: AngularFireStorage) {
     this.loginsCollections = afs.collection<LoginModel>('logins');
   }
 
@@ -55,7 +56,7 @@ export class LoginService {
   async signLogin(user: LoginModel): Promise<Observable<LoginModel[]>> {
     const login = await this.login(user);
     LoginService.userSession = await this.setUserSession(login.user.uid);
-    LoginService.userSession.subscribe(s => {
+    await LoginService.userSession.subscribe(s => {
       LoginService.userEmitter.emit(s);
     });
     return await LoginService.userSession;
@@ -63,7 +64,10 @@ export class LoginService {
 
   async logOut() {
     try {
-      return await this.afAuth.auth.signOut();
+      const login = await this.afAuth.auth.signOut();
+      LoginService.userSession = null;
+      LoginService.userEmitter.emit(null);
+      return await login;
     } catch (error) {
       console.log(error);
       return error;
@@ -83,13 +87,19 @@ export class LoginService {
 
   async addLogin(login: LoginModel): Promise<any> {
     const result = await this.createLogin(login);
-    return this.loginsCollections.add({
-      uid: result.user.uid,
-      email: login.email,
-      password: null,
-      nome: login.nome,
-      sobrenome: login.sobrenome,
-      habilidades: login.habilidades
+    login.uid = await result.user.uid;
+    const img = await this.uploadImage(login);
+    await this.storage.ref(this.getFileURL(login)).getDownloadURL().subscribe(s => {
+      return this.loginsCollections.add({
+        uid: login.uid,
+        email: login.email,
+        password: null,
+        nome: login.nome,
+        sobrenome: login.sobrenome,
+        habilidades: login.habilidades,
+        image: null,
+        imagePath: s
+      });
     });
   }
 
@@ -119,5 +129,19 @@ export class LoginService {
     this.afAuth.auth.signOut().then(() => {
       this.routesService.goToHome(null);
     });
+  }
+
+  async uploadImage(user: LoginModel) {
+    const filePath = this.getFileURL(user);
+    const ref = this.storage.ref(filePath);
+    return await ref.put(user.image);
+  }
+
+  getFileURL(user: LoginModel) {
+    return `/images/perfil/${user.uid}/perfil.${this.getFileExtension(user.image.name)}`;
+  }
+
+  getFileExtension(fileName) {
+    return fileName.substr((fileName.lastIndexOf('.') + 1));
   }
 }

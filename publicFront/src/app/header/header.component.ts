@@ -5,6 +5,7 @@ import { RoutesService } from './../services/routes/routes.service';
 import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
+import { LogoutModalComponent } from '../modais/logout-modal/logout-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private routes: RoutesService, private modalService: BsModalService, private loginServide: LoginService) {
     LoginService.userEmitter.subscribe(s => {
-      this.user = s ? s[0] : this.user;
+      this.user = s ? s[0] : null;
       console.log('Event' + s);
     });
   }
@@ -34,6 +35,21 @@ export class HeaderComponent implements OnInit {
   }
 
   openLoginModal() {
+    if (!this.isLogged()) {
+      this.callLoginModal();
+    } else {
+      this.callLogoutModal();
+    }
+  }
+
+  callLogoutModal() {
+    const initialState = {
+      close: () => this.modalRef.hide()
+    };
+    this.modalRef = this.modalService.show(LogoutModalComponent, {initialState});
+  }
+
+  callLoginModal() {
     const initialState = {
       close: () => this.modalRef.hide()
     };
