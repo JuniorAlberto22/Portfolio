@@ -1,7 +1,7 @@
 import { RoutesService } from '../../services/routes/routes.service';
 import { LoginService } from '../../services/login/login.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@Angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { LoginModel } from '../../Models/LoginModel';
 
 @Component({

@@ -1,7 +1,7 @@
 import { LoginModel } from './../../Models/LoginModel';
 import { LoginService } from './../../services/login/login.service';
 import { RoutesService } from './../../services/routes/routes.service';
-import { FormGroup, FormControl } from '@Angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LoginCrudComponent } from 'src/app/modais/login-crud/login-crud.component';
