@@ -10,6 +10,7 @@ export class NoticeCrudComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

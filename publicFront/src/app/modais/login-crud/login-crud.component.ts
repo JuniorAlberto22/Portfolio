@@ -7,7 +7,7 @@ import { LoginModel } from '../../Models/LoginModel';
 @Component({
   selector: 'app-login-crud',
   templateUrl: './login-crud.component.html',
-  styleUrls: ['./login-crud.component.css', './login-crud.component.sass']
+  styleUrls: ['./login-crud.component.css']
 })
 export class LoginCrudComponent implements OnInit {
 
@@ -73,6 +73,7 @@ export class LoginCrudComponent implements OnInit {
     reader.addEventListener('load', (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
     });
+
     reader.readAsDataURL(file);
     reader.onload = () => this.imageFile = reader.result;
   }
@@ -80,6 +81,7 @@ export class LoginCrudComponent implements OnInit {
   closeModal() {
     this.close();
   }
+
   ngOnInit() {
   }
 }
