@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatButton, MatCard, MatCardImage } from '@angular/material';
-import { text } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-card-feed',
