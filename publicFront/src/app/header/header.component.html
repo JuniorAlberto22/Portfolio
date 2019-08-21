@@ -35,17 +35,17 @@
 
     <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
-            <a (click)="openLoginModal()" class="button" class="p-2 mb-2 bg-info text-white">
+          <div class="buttons pull-right">
+            <a (click)="openLoginModal()" class="button" style="margin-left: 600px" class="p-2 mb-2 bg-info text-white">
               {{isLogged() ? 'Logout' : 'Login'}}
             </a>
           </div>
         </div>
     </div>
     <div class="row" *ngIf="isLogged()">
-      <p style="margin-left: 50px">Bem vindo {{user?.nome + ' ' + user?.sobrenome}}</p>
+      <p style="margin-left: -350px; margin-top: 15px">Bem vindo(a), {{user?.nome + ' ' + user?.sobrenome}}</p>
       <div class="avatar" style="float: right;">
-          <img height="75px" width="75px" alt="" style="border-radius: 75%;" [src]="user?.imagePath">
+          <img height="45px" width="45px" alt="" style="border-radius: 75%;margin-top: 15px" [src]="user?.imagePath">
       </div>
     </div>
   </nav>

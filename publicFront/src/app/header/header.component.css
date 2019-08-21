@@ -3,3 +3,13 @@
 
   }
 
+.row>p{
+  position: relative;
+  display: block;
+  padding: 15px 15px;
+
+}
+
+.navbar-item{
+  cursor: pointer
+}
